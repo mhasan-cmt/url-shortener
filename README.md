@@ -41,10 +41,10 @@ curl http://localhost:8080/api/analytics/{slug}
 
 - Default configuration: 10 shorten requests per IP per hour.
 
-- This is an in-memory solution (not distributed). For distributed environments, switch to a Redis-based bucket store or a distributed token-bucket implementation.
+- This is an in-memory solution (not distributed). For distributed environments, we might have to switch to a Redis-based bucket store or a distributed token-bucket implementation.
 
 ## Database
-- ```application-local.yaml``` (H2) — good for development
+- ```application-local.yaml``` (H2) —  for development
 
 - ```application-prod.yaml``` (PostgreSQL) — configure credentials/host
 
