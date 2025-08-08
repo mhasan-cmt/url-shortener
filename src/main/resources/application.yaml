@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: url-shortener
+  profiles:
+    active: local
