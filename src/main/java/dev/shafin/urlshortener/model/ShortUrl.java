@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "short_urls")
 @Getter
@@ -32,7 +34,11 @@ public class ShortUrl extends AuditTrail {
     @Column(nullable = false)
     private int clickCount = 0;
 
-    public void incrementClickCount() {
+    @Column(name = "last_accessed_at")
+    private LocalDateTime lastAccessedAt;
+
+    public synchronized void incrementClickCountAndSetLastAccessed(LocalDateTime time) {
         this.clickCount++;
+        this.lastAccessedAt = time;
     }
 }

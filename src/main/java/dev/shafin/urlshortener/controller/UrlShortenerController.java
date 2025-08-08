@@ -29,4 +29,14 @@ public class UrlShortenerController {
         String shortUrl = service.shortenUrl(originalUrl, customSlug);
         return ResponseEntity.ok(Map.of("shortUrl", shortUrl));
     }
+
+    @GetMapping("/analytics/{slug}")
+    public ResponseEntity<?> analytics(@PathVariable String slug) {
+        try {
+            Map<String, Object> analytics = service.getAnalytics(slug);
+            return ResponseEntity.ok(analytics);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+        }
+    }
 }
